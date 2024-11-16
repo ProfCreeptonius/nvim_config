@@ -1,0 +1,1 @@
+For some reason, not including all of nvchad's themes in the themes folder just crashes the theme selector :( 

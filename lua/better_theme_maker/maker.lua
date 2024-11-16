@@ -1,0 +1,17 @@
+return function(M)
+  M.polish_hl = {
+    treesitter = {
+      ['@variable'] = { fg = M.base_30.lavender },
+      ['@property'] = { fg = M.base_30.teal },
+      ['@keyword.exception'] = { fg = M.base_30.dark_purple },
+      ['@keyword.repeat'] = { fg = M.base_30.dark_purple },
+      ['@keyword'] = { fg = M.base_30.dark_purple },
+      ['@variable.builtin'] = { fg = M.base_30.red },
+      ['@lsp.mod.readonly'] = { fg = M.base_30.cyan },
+      ['@lsp.type.modifier'] = { fg = M.base_30.dark_purple },
+      ['@variable.parameter'] = { fg = M.base_30.red },
+      ['@punctuation.delimiter'] = { fg = M.base_30.lavender },
+    },
+  }
+  return M
+end
