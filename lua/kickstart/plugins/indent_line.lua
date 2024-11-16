@@ -1,4 +1,4 @@
-local nvchad_colors = dofile(vim.g.base46_cache .. 'colors')
+local _, nvchad_colors = pcall(dofile, vim.g.base46_cache .. 'colors')
 
 return {
   { -- Add indentation guides even on blank lines
@@ -6,6 +6,7 @@ return {
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
+    dependencies = 'nvchad/base46',
     opts = {},
     config = function()
       local highlight = {
