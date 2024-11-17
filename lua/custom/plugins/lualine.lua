@@ -12,10 +12,28 @@ local clients_lsp = function()
 end
 
 local base46theme = require 'custom.plugins.lualine_theme.theme'
+local function is_active()
+  local ok, hydra = pcall(require, 'hydra.statusline')
+  return ok and hydra.is_active()
+end
+
+local function get_name()
+  if is_active() then
+    local ok, hydra = pcall(require, 'hydra.statusline')
+    if ok then
+      return hydra.get_name()
+    end
+  else
+    return 'progress', 'searchcount'
+  end
+  return ''
+end
+
+--- for lualine add this component
 
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons', 'base46' },
+  dependencies = { 'nvim-tree/nvim-web-devicons', 'base46', 'smoka7/multicursors.nvim' },
   event = 'VeryLazy',
   opts = {
     options = {
@@ -37,8 +55,9 @@ return {
       },
     },
     sections = {
-      lualine_a = { 'mode' },
-      lualine_b = { 'progress', 'searchcount' },
+      lualine_a = { 'mode', { get_name, cond = is_active } },
+      lualine_b = { 'progress' },
+
       lualine_c = { 'diagnostics' },
       lualine_x = { clients_lsp },
       lualine_y = { 'filetype' },

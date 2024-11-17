@@ -12,6 +12,16 @@ return function(M)
       ['@variable.parameter'] = { fg = M.base_30.red },
       ['@punctuation.delimiter'] = { fg = M.base_30.lavender },
     },
+    defaults = {
+      MultiCursor = {
+        fg = M.base_30.black,
+        bg = M.base_30.grey_fg,
+      },
+      MultiCursorMain = {
+        fg = M.base_30.black,
+        bg = M.base_30.yellow,
+      },
+    },
   }
   return M
 end

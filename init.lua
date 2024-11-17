@@ -962,6 +962,7 @@ require 'configs.options'
 require 'configs.mappings'
 require 'configs.vimtex'
 require 'configs.dap'
+require 'configs.multi'
 
 require 'after_init'
 -- The line beneath this is called `modeline`. See `:help modeline`
