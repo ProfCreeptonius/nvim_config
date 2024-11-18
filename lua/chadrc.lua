@@ -18,4 +18,9 @@ M.ui = {
   },
 }
 
+--  Get outta here nvchad, this is too much bloat.
+M.lsp = {
+  signature = false,
+}
+
 return M
