@@ -50,7 +50,7 @@ map('n', 'gtd', require('telescope.builtin').lsp_type_definitions, { desc = '[G]
 map('n', '<leader>fdb', require('telescope.builtin').lsp_document_symbols, { desc = '[F]ind [D]ocument Sym[b]ols' })
 map('n', '<leader>fsb', require('telescope.builtin').lsp_dynamic_workspace_symbols, { desc = '[F]ind Workspace [S]ym[b]ols' })
 map('n', '<leader>rd', require('telescope.builtin').resume, { desc = '[R]e[d]o search.' })
-map('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
+map('n', '<leader>rn', require 'nvchad.lsp.renamer', { desc = '[R]e[n]ame' })
 map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
 map('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
 
