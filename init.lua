@@ -444,7 +444,7 @@ require('lazy').setup({
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
+    -- used for completion, annotations and /signatures of Neovim apis
     'folke/lazydev.nvim',
     ft = 'lua',
     opts = {
@@ -542,7 +542,11 @@ require('lazy').setup({
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           -- // Unused, since overwritten later.
-          -- map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+
+          -- Custom signature help command.
+          map('<leader>sh', vim.lsp.buf.signature_help, '[S]ignature [H]elp')
+          map('<C-s>', vim.lsp.buf.signature_help, '[S]ignature [H]elp', 'i')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
