@@ -1,8 +1,11 @@
 ## Prof's neovim config
+### WINDOWS VERSION:
 
 Repository for my neovim config, based on:
   -  Kickstart: https://github.com/nvim-lua/kickstart.nvim
   -  NvChad: https://github.com/NvChad/NvChad
+
+
 
 And some other plugins, see ./lua/custom/plugins/
 
