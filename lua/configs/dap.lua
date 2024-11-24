@@ -54,6 +54,8 @@ dap.configurations.c = {
 
 dap.configurations.cpp = dap.configurations.c
 
-require('lspconfig').clangd.setup {
-  cmd = { 'clangd', '--completion-style=detailed' },
-}
+if require('lspconfig').clangd ~= nil then
+  require('lspconfig').clangd.setup {
+    cmd = { 'clangd', '--completion-style=detailed' },
+  }
+end
