@@ -1,4 +1,5 @@
 ## Prof's neovim config
+### UNIX version
 
 Repository for my neovim config, based on:
   -  Kickstart: https://github.com/nvim-lua/kickstart.nvim
