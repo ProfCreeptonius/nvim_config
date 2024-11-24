@@ -8,8 +8,6 @@ And some other plugins, see ./lua/custom/plugins/
 
 This is *NOT PRODUCTION READY*: There are many evil hacks in this config!
 
-If you insist on trying this config, clone this repo to your NeoVim config folder (usually ~/.config/nvim/), and run neovim *twice*. 
-There will be errors the first time. This is a consequence of one of my hacks. Sorry.
-
+This branch is specifically intended for use with Visual Studio Code and this extension: `https://github.com/vscode-neovim/vscode-neovim`. Thus it removes a lot of things specifically for NeoVim. Not intended for stand-alone use.
 
 
