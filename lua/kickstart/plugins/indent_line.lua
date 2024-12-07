@@ -10,12 +10,11 @@ return {
     opts = {},
     config = function()
       local highlight = {
-        'RainbowRed',
         'RainbowYellow',
+        'RainbowViolet',
         'RainbowBlue',
         'RainbowOrange',
         'RainbowGreen',
-        'RainbowViolet',
         'RainbowCyan',
       }
       local hooks = require 'ibl.hooks'
