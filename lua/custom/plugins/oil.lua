@@ -3,6 +3,12 @@ return {
   ---@module 'oil'
   ---@type oil.SetupOpts
   opts = {
+    columns = {
+      'permissions',
+      'size',
+      'mtime',
+      'icon',
+    },
     keymaps = {
       ['g?'] = 'actions.show_help',
       ['<CR>'] = 'actions.select',
