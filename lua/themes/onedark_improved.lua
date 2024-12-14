@@ -10,6 +10,13 @@ better_theme.polish_hl = {
     ['@keyword.repeat'] = { fg = better_theme.base_30.dark_purple },
     ['@keyword'] = { fg = better_theme.base_30.dark_purple },
     ['@punctuation.delimiter'] = { fg = better_theme.base_16.base05 },
+    ['RainbowRed'] = { fg = better_theme.base_16.base0A },
+    ['RainbowYellow'] = { fg = better_theme.base_16.base0C },
+    ['RainbowBlue'] = { fg = better_theme.base_16.base0E },
+    ['RainbowOrange'] = { fg = better_theme.base_16.base0B },
+    ['RainbowGreen'] = { fg = better_theme.base_16.base09 },
+    ['RainbowViolet'] = { fg = better_theme.base_16.base0D },
+    ['RainbowCyan'] = { fg = better_theme.base_16.base08 },
   },
 }
 -- better_theme = require('base46').override_theme(better_theme, 'catppuccin')
