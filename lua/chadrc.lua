@@ -1,7 +1,7 @@
 local M = {}
 
 M.base46 = {
-  theme = 'onedark_improved',
+  theme = 'catppuccin_improved',
   hl_override = {
     CursorLine = {
       bg = 'darker_black',
