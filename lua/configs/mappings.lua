@@ -59,6 +59,7 @@ map('n', '<F2>', '[', { noremap = true, silent = true })
 map('n', '<F3>', ']', { noremap = true, silent = true })
 map('n', 's', '*Ncgn', { noremap = true, silent = true, desc = '[S]ubstitute current word and prepare to replace' })
 
+-- Quickfix list
 local function quickfixerrors()
   local diag_table = vim.diagnostic.get(nil)
   local quickfix_items = vim.diagnostic.toqflist(diag_table)
@@ -68,3 +69,14 @@ end
 
 map('n', '<leader>mk', '<cmd>make<CR>', { desc = 'Run [M]a[k]e' })
 map('n', '<leader>q', quickfixerrors, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Small terminal
+
+local function smallterm()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd 'J'
+  vim.api.nvim_win_set_height(0, 5)
+end
+
+map('n', '<leader>st', smallterm, { desc = 'Open [S]mall [T]erminal' })
