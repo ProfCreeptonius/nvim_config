@@ -29,6 +29,10 @@ local function get_name()
   return ''
 end
 
+local function inactive()
+  return '[inactive]'
+end
+sections = { lualine_a = { hello } }
 --- for lualine add this component
 
 return {
@@ -65,7 +69,7 @@ return {
     },
     inactive_sections = {
       lualine_a = {},
-      lualine_b = {},
+      lualine_b = { inactive },
       lualine_c = { 'filename' },
       lualine_x = { 'location' },
       lualine_y = {},
