@@ -58,7 +58,13 @@ map('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
 map('n', '<F2>', '[', { noremap = true, silent = true })
 map('n', '<F3>', ']', { noremap = true, silent = true })
 map('n', 's', '*Ncgn', { noremap = true, silent = true, desc = '[S]ubstitute current word and prepare to replace' })
-map('n', '<leader>th', function()
-  -- require('nvchad.themes').open()
-  -- dofile(vim.g.base46_cache .. 'syntax')
-end, { desc = 'Change [Th]emes' })
+
+local function quickfixerrors()
+  local diag_table = vim.diagnostic.get(nil)
+  local quickfix_items = vim.diagnostic.toqflist(diag_table)
+  vim.fn.setqflist(quickfix_items, 'a')
+  vim.cmd 'Trouble qflist toggle'
+end
+
+map('n', '<leader>mk', '<cmd>make<CR>', { desc = 'Run [M]a[k]e' })
+map('n', '<leader>q', quickfixerrors, { desc = 'Open diagnostic [Q]uickfix list' })
