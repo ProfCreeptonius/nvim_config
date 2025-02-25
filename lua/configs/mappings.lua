@@ -80,3 +80,5 @@ local function smallterm()
 end
 
 map('n', '<leader>st', smallterm, { desc = 'Open [S]mall [T]erminal' })
+map('i', 'df', '<BS>')
+map('i', 'fd', '<BS>')

@@ -40,8 +40,8 @@ return {
     c = { bg = colors.inactivegray, fg = colors.white },
   },
   inactive = {
-    a = { bg = colors.black, fg = colors.gray, gui = 'bold' },
-    b = { bg = colors.black, fg = colors.gray },
-    c = { bg = colors.black, fg = colors.gray },
+    a = { bg = colors.darker_black, fg = colors.gray, gui = 'bold' },
+    b = { bg = colors.darker_black, fg = colors.gray },
+    c = { bg = colors.darker_black, fg = colors.gray },
   },
 }
