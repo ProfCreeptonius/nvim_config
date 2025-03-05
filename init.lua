@@ -717,7 +717,10 @@ require('lazy').setup({
       },
     },
   },
-
+  -- Maki addition: Fancy icons.
+  {
+    'onsails/lspkind-nvim',
+  },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -738,12 +741,13 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load { paths = './lua/snippets/' }
+            end,
+          },
+          { 'kevinm6/snippets' },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -759,6 +763,7 @@ require('lazy').setup({
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local lspkind = require 'lspkind'
       luasnip.config.setup {}
 
       cmp.setup {
@@ -831,6 +836,26 @@ require('lazy').setup({
           { name = 'luasnip' },
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
+        },
+        sorting = {
+          priority_weight = 1,
+          comparators = {
+            cmp.config.compare.locality,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.score,
+            cmp.config.compare.offset,
+            cmp.config.compare.order,
+            cmp.config.compare.length,
+          },
+        },
+        formatting = {
+          format = function(entry, vim_item)
+            local source = entry.source.name
+            if source == 'luasnip' then
+              vim_item.dup = 0
+            end
+            return vim_item
+          end,
         },
       }
     end,
