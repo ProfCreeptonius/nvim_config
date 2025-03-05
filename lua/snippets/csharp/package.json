@@ -1,0 +1,13 @@
+{
+	"name": "Maki CSharp snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"csharp"
+				],
+				"path": "./csharp.json"
+			}
+		]
+	}
+}

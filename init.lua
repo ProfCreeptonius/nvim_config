@@ -751,6 +751,7 @@ require('lazy').setup({
         },
       },
       'saadparwaiz1/cmp_luasnip',
+      'octaltree/cmp-look',
 
       -- Adds other completion capabilities.
       --  nvim-cmp does not ship with all sources by default. They are split
@@ -758,6 +759,7 @@ require('lazy').setup({
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      'amarakon/nvim-cmp-buffer-lines',
     },
     config = function()
       -- See `:help cmp`
@@ -765,7 +767,22 @@ require('lazy').setup({
       local luasnip = require 'luasnip'
       local lspkind = require 'lspkind'
       luasnip.config.setup {}
-
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
+      end
+      local default_sources = {
+        {
+          name = 'lazydev',
+          -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+          group_index = 0,
+        },
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'path' },
+        { name = 'nvim_lsp_signature_help' },
+      }
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -791,7 +808,12 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<C-y>'] = cmp.mapping(function()
+            cmp.confirm { select = true }
+            cmp.setup.buffer {
+              sources = default_sources,
+            }
+          end),
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
@@ -823,20 +845,22 @@ require('lazy').setup({
             end
           end, { 'i', 's' }),
 
+          ['<C-k>'] = cmp.mapping(function(fallback)
+            if has_words_before() then
+              cmp.setup.buffer {
+                sources = {
+                  { name = 'look' },
+                },
+              }
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
-        sources = {
-          {
-            name = 'lazydev',
-            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-            group_index = 0,
-          },
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'path' },
-          { name = 'nvim_lsp_signature_help' },
-        },
+        sources = default_sources,
         sorting = {
           priority_weight = 1,
           comparators = {
