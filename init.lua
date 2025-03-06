@@ -718,13 +718,13 @@ require('lazy').setup({
     },
   },
   -- Maki addition: Fancy icons.
-  {
-    'onsails/lspkind-nvim',
-  },
-  {
-    'tzachar/cmp-ai',
-    dependencies = 'nvim-lua/plenary.nvim',
-  },
+  -- {
+  --   'onsails/lspkind-nvim',
+  -- },
+  -- {
+  --   'tzachar/cmp-ai',
+  --   dependencies = 'nvim-lua/plenary.nvim',
+  -- },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -765,12 +765,12 @@ require('lazy').setup({
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'amarakon/nvim-cmp-buffer-lines',
       'tzachar/cmp-ai',
+      opts = {},
     },
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      local lspkind = require 'lspkind'
       luasnip.config.setup {}
       local has_words_before = function()
         unpack = unpack or table.unpack
@@ -778,11 +778,11 @@ require('lazy').setup({
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
       end
       local default_sources = {
-        {
-          name = 'lazydev',
-          -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-          group_index = 0,
-        },
+        -- {
+        --   name = 'lazydev',
+        --   -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+        --   group_index = 0,
+        -- },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
@@ -862,16 +862,18 @@ require('lazy').setup({
               fallback()
             end
           end, { 'i', 's' }),
-          ['<C-x>'] = cmp.mapping(
-            cmp.mapping.complete {
-              config = {
-                sources = cmp.config.sources {
-                  { name = 'cmp_ai' },
+          ['<C-x>'] = cmp.mapping(function(fallback)
+            if has_words_before() then
+              cmp.setup.buffer {
+                sources = {
+                  { name = 'cmp-ai' },
                 },
-              },
-            },
-            { 'i' }
-          ),
+              }
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
