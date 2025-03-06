@@ -721,10 +721,6 @@ require('lazy').setup({
   -- {
   --   'onsails/lspkind-nvim',
   -- },
-  -- {
-  --   'tzachar/cmp-ai',
-  --   dependencies = 'nvim-lua/plenary.nvim',
-  -- },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -764,7 +760,10 @@ require('lazy').setup({
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'amarakon/nvim-cmp-buffer-lines',
-      'tzachar/cmp-ai',
+      {
+        'tzachar/cmp-ai',
+        dependencies = 'nvim-lua/plenary.nvim',
+      },
       opts = {},
     },
     config = function()
@@ -862,18 +861,16 @@ require('lazy').setup({
               fallback()
             end
           end, { 'i', 's' }),
-          ['<C-x>'] = cmp.mapping(function(fallback)
-            if has_words_before() then
-              cmp.setup.buffer {
-                sources = {
-                  { name = 'cmp-ai' },
+          ['<C-x>'] = cmp.mapping(
+            cmp.mapping.complete {
+              config = {
+                sources = cmp.config.sources {
+                  { name = 'cmp_ai' },
                 },
-              }
-              cmp.complete()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
+              },
+            },
+            { 'i' }
+          ),
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
