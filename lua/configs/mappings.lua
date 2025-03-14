@@ -81,4 +81,12 @@ end
 
 map('n', '<leader>st', smallterm, { desc = 'Open [S]mall [T]erminal' })
 map('i', 'df', '<BS>')
-map('i', 'fd', '<BS>')
+map('n', '<leader>aval', require('avalonia').open_preview, { desc = '[Aval]onia open preview' })
+
+-- ['<leader>aion'] = cmp.mapping(function(fallback)
+--   cmp.setup.buffer {
+--     sources = default_sources_with_ai,
+--     sorting = default_sorting,
+--   }
+--   cmp.complete()
+-- end, { 'n' }),

@@ -721,7 +721,6 @@ require('lazy').setup({
   -- {
   --   'onsails/lspkind-nvim',
   -- },
-  
 
   -- { -- You can easily change to a different colorscheme.
   --   -- Change the name of the colorscheme plugin below, and then
@@ -861,6 +860,7 @@ require 'configs.mappings'
 require 'configs.vimtex'
 require 'configs.dap'
 require 'configs.multi'
+require 'configs.avalonia'
 
 require 'after_init'
 -- The line beneath this is called `modeline`. See `:help modeline`
