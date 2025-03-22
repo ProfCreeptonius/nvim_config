@@ -82,6 +82,7 @@ end
 map('n', '<leader>st', smallterm, { desc = 'Open [S]mall [T]erminal' })
 map('i', 'df', '<BS>')
 map('n', '<leader>aval', require('avalonia').open_preview, { desc = '[Aval]onia open preview' })
+map('n', '<leader>z', require('zen-mode').toggle, { desc = '[Z]en mode' })
 
 -- ['<leader>aion'] = cmp.mapping(function(fallback)
 --   cmp.setup.buffer {
