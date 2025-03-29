@@ -32,6 +32,11 @@ end
 local function inactive()
   return '[inactive]'
 end
+
+local function window_number()
+  return '[' .. tostring(vim.api.nvim_win_get_number(0)) .. ']'
+end
+
 sections = { lualine_a = { hello } }
 --- for lualine add this component
 
@@ -68,7 +73,7 @@ return {
       lualine_z = { { 'filename', path = 1 } },
     },
     inactive_sections = {
-      lualine_a = {},
+      lualine_a = { window_number },
       lualine_b = { inactive },
       lualine_c = { 'filename' },
       lualine_x = { 'location' },
