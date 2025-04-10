@@ -8,6 +8,11 @@ return {
         enabled = false,
       },
     },
+    jump = {
+      -- pos = 'range',
+      autojump = 'true',
+      inclusive = true,
+    },
   },
   -- stylua: ignore
   keys = {
