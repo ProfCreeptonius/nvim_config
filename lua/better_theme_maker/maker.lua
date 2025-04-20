@@ -13,6 +13,7 @@ return function(M)
       ['@punctuation.delimiter'] = { fg = M.base_30.lavender },
     },
     defaults = {
+
       MultiCursor = {
         fg = M.base_30.black,
         bg = M.base_30.grey_fg,
@@ -20,6 +21,9 @@ return function(M)
       MultiCursorMain = {
         fg = M.base_30.black,
         bg = M.base_30.yellow,
+      },
+      BlinkCmpGhostText = {
+        fg = M.base_30.light_grey,
       },
     },
   }

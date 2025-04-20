@@ -6,3 +6,4 @@ vim.filetype.add {
 }
 
 vim.g.lazyvim_blink_main = true
+vim.api.nvim_create_autocmd({ 'FIleType' }, { pattern = 'tex', group = optional_group, command = 'TSBufDisable highlight' })

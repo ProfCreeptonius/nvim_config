@@ -17,7 +17,7 @@ return {
           api_key = 'TERM',
           name = 'Ollama',
           end_point = 'http://localhost:11434/v1/completions',
-          model = 'qwen2.5-coder:32b-base-q4_K_M',
+          model = 'deepseek-coder-v2:16b-lite-base-q6_K',
           optional = {
             max_tokens = 56,
             top_p = 0.9,
