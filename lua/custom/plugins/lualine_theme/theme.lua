@@ -8,7 +8,7 @@ local colors = {
   blue = nvchad_colors.blue,
   yellow = nvchad_colors.yellow,
   gray = nvchad_colors.grey,
-  lightgray = nvchad_colors.one_bg,
+  lightgray = nvchad_colors.one_bg2,
   inactivegray = nvchad_colors.darker_black,
   purple = nvchad_colors.purple,
 }

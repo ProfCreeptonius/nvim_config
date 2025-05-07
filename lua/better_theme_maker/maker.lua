@@ -25,6 +25,10 @@ return function(M)
       BlinkCmpGhostText = {
         fg = M.base_30.light_grey,
       },
+      StatusLineNC = {
+        bg = M.base_30.black,
+        fg = M.base_30.grey_fg,
+      },
     },
   }
   return M

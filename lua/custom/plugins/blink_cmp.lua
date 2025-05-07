@@ -36,6 +36,16 @@ return {
           cmp.show { providers = { 'minuet' } }
         end,
       },
+      ['<C-l>'] = {
+        function(cmp)
+          cmp.snippet_forward()
+        end,
+      },
+      ['<C-S-l>'] = {
+        function(cmp)
+          cmp.snippet_backward()
+        end,
+      },
     },
 
     signature = {
@@ -88,15 +98,15 @@ return {
     --   preset = 'luasnip',
     -- },
     sources = {
-      default = { 'minuet', 'lsp', 'path', 'snippets', 'buffer', 'spell' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'spell' },
       providers = {
         snippets = {
           name = 'snippets',
-          score_offset = 3,
+          score_offset = 6,
         },
         lsp = {
           name = 'lsp',
-          score_offset = 2,
+          score_offset = 5,
         },
         buffer = {
           name = 'buffer',
