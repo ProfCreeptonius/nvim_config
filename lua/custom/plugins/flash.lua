@@ -9,8 +9,8 @@ return {
       },
     },
     jump = {
-      -- pos = 'range',
-      autojump = 'true',
+      pos = 'range',
+      -- autojump = 'true',
       inclusive = true,
     },
   },

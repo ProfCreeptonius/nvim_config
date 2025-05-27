@@ -153,7 +153,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
@@ -615,7 +615,22 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {
+          cmd = {
+            'clangd',
+            '--background-index',
+            '-j=12',
+            '--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
+            '--clang-tidy',
+            '--clang-tidy-checks=*',
+            '--all-scopes-completion',
+            '--cross-file-rename',
+            '--completion-style=detailed',
+            '--header-insertion-decorators',
+            '--header-insertion=iwyu',
+            '--pch-storage=memory',
+          },
+        },
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
