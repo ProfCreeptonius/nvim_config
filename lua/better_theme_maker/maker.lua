@@ -29,6 +29,46 @@ return function(M)
         bg = M.base_30.black,
         fg = M.base_30.grey_fg,
       },
+      IncSearch = {
+        bg = M.base_30.orange,
+        fg = M.base_30.darker_black,
+      },
+      Search = {
+        bg = M.base_30.orange,
+        fg = M.base_30.darker_black,
+      },
+      Substitute = {
+        bg = M.base_30.orange,
+        fg = M.base_30.darker_black,
+      },
+      MiniStatuslineModeNormal = {
+        bg = M.base_30.blue,
+        fg = M.base_30.darker_black,
+      },
+      MiniStatuslineModeInsert = {
+        bg = M.base_30.green,
+        fg = M.base_30.darker_black,
+      },
+      MiniStatuslineModeVisual = {
+        bg = M.base_30.purple,
+        fg = M.base_30.darker_black,
+      },
+      MiniStatuslineModeReplace = {
+        bg = M.base_30.yellow,
+        fg = M.base_30.darker_black,
+      },
+      MiniStatuslineModeCommand = {
+        bg = M.base_30.red,
+        fg = M.base_30.darker_black,
+      },
+      MiniStatuslineModeOther = {
+        bg = M.base_30.orange,
+        fg = M.base_30.darker_black,
+      },
+      MiniStatuslineFilename = {
+        bg = M.base_30.black,
+        fg = M.base_30.light_grey,
+      },
     },
   }
   return M

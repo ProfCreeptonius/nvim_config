@@ -9,7 +9,7 @@ return {
       },
     },
     jump = {
-      pos = 'range',
+      -- pos = 'range',
       -- autojump = 'true',
       inclusive = true,
     },
