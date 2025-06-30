@@ -55,8 +55,6 @@ map('n', '<leader>fm', require('telescope.builtin').man_pages, { desc = '[F]ind 
 map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
 map('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
 
-map('n', '<F2>', '[', { noremap = true, silent = true })
-map('n', '<F3>', ']', { noremap = true, silent = true })
 map('n', 's', '*Ncgn', { noremap = true, silent = true, desc = '[S]ubstitute current word and prepare to replace' })
 
 -- Quickfix list

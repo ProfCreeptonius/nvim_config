@@ -25,8 +25,8 @@ M.base_30 = {
   blue = '#61afef',
   yellow = '#e7c787',
   sun = '#EBCB8B',
-  purple = '#de98fd',
-  dark_purple = '#c882e7',
+  purple = '#c678dd',
+  dark_purple = '#c678dd',
   teal = '#519ABA',
   orange = '#fca2aa',
   cyan = '#a3b8ef',
@@ -57,6 +57,6 @@ M.base_16 = {
 
 M.type = 'dark'
 
-M = require('base46').override_theme(M, 'onedark')
+M = require('base46').override_theme(M, 'onedark_darker')
 
 return M

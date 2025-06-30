@@ -46,6 +46,9 @@ return {
           cmp.snippet_backward()
         end,
       },
+      ['<F2>'] = { 'select_and_accept' },
+      ['<F3>'] = { 'select_next' },
+      ['<F4>'] = { 'select_prev' },
     },
 
     signature = {
