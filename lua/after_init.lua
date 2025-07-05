@@ -14,5 +14,4 @@ vim.cmd.highlight { 'vCursor', 'guibg=' .. nvchad_colors.purple }
 vim.cmd.highlight { 'cCursor', 'guibg=' .. nvchad_colors.red }
 vim.cmd.highlight { 'Cursor', 'guibg=' .. nvchad_colors.blue }
 
-vim.cmd.set 'laststatus=3'
 -- vim.opt.guicursor = 'a:block-Cursor,i:block-iCursor,v:block-vCursor,c-ci-cr:block-cCursor,r:block-rCursor'

@@ -11,6 +11,7 @@ return function(M)
       ['@lsp.type.modifier'] = { fg = M.base_30.purple },
       ['@lsp.type.concept.cpp'] = { fg = M.base_30.orange },
       ['@lsp.type.typeParameter.cpp'] = { fg = M.base_30.orange },
+      ['@lsp.type.struct.cs'] = { fg = M.base_30.orange },
       ['@variable.parameter'] = { fg = M.base_30.red },
       ['@punctuation.delimiter'] = { fg = M.base_30.lavender },
     },

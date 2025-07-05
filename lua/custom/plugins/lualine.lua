@@ -37,30 +37,32 @@ local function window_number()
   return '[' .. tostring(vim.api.nvim_win_get_number(0)) .. ']'
 end
 
-sections = { lualine_a = { hello } }
---- for lualine add this component
+local function inactive_window_number()
+  return '[' .. tostring(vim.api.nvim_win_get_number(0)) .. '] '
+end
 
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', 'base46', 'smoka7/multicursors.nvim' },
-  event = 'VeryLazy',
+  -- event = 'VeryLazy',
   opts = {
     options = {
       icons_enabled = true,
       theme = base46theme,
       component_separators = { left = '', right = '' },
       section_separators = { left = '', right = '' },
+      always_show_tabline = false,
       disabled_filetypes = {
         statusline = {},
         winbar = {},
       },
       ignore_focus = {},
       always_divide_middle = true,
-      globalstatus = false,
+      globalstatus = true,
       refresh = {
-        statusline = 10,
-        tabline = 100,
-        winbar = 100,
+        statusline = 20,
+        tabline = 20,
+        winbar = 20,
       },
     },
     sections = {
@@ -73,16 +75,37 @@ return {
       lualine_z = { { 'filename', path = 1 } },
     },
     inactive_sections = {
-      lualine_a = { window_number },
-      lualine_b = { inactive },
+      lualine_a = {},
+      lualine_b = {},
       lualine_c = { 'filename' },
       lualine_x = { 'location' },
       lualine_y = {},
       lualine_z = {},
     },
-    tabline = {},
-    winbar = {},
-    inactive_winbar = {},
-    extensions = {},
+    tabline = {
+      lualine_a = { 'buffers' },
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = { 'tabs' },
+    },
+    winbar = {
+      lualine_a = { window_number },
+      lualine_b = {},
+      lualine_c = { 'filename' },
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = { window_number },
+    },
+    inactive_winbar = {
+      lualine_a = { inactive_window_number },
+      lualine_b = {},
+      lualine_c = { 'filename' },
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = { window_number },
+    },
+    extensions = { 'quickfix' },
   },
 }

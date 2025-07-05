@@ -9,7 +9,7 @@ local colors = {
   yellow = nvchad_colors.yellow,
   gray = nvchad_colors.grey,
   lightgray = nvchad_colors.one_bg2,
-  inactivegray = '#000000',
+  inactivegray = nvchad_colors.black2,
   purple = nvchad_colors.purple,
 }
 
