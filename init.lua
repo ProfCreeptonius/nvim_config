@@ -92,7 +92,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
+-- vim.cmd 'set termguicolors'
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -229,6 +230,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
+
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
@@ -619,7 +621,7 @@ require('lazy').setup({
           cmd = {
             'clangd',
             '--background-index',
-            '-j=12',
+            '-j=32',
             '--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
             '--clang-tidy',
             '--clang-tidy-checks=*',
@@ -758,45 +760,6 @@ require('lazy').setup({
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
-    config = function()
-      -- Better Around/Inside textobjects
-      --
-      -- Examples:
-      --  - va)  - [V]isually select [A]round [)]paren
-      --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-      --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
-
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
-      --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - sd'   - [S]urround [D]elete [']quotes
-      -- - sr)'  - [S]urround [R]eplace [)] [']
-      -- NOTE: Removed this, prever nvim surround
-      -- require('mini.surround').setup()
-
-      -- -- Simple and easy statusline.
-      -- --  You could remove this setup call if you don't like it,
-      -- --  and try some other statusline plugin
-      -- -- NOTE: Removed this, prefer lualine.
-      -- --
-      -- local statusline = require 'mini.statusline'
-      -- -- set use_icons to true if you have a Nerd Font
-      -- statusline.setup { use_icons = vim.g.have_nerd_font }
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-
-      --   return '%2l:%-2v'
-      -- end
-
-      -- ... and there is more!
-      --  Check out: https://github.com/echasnovski/mini.nvim
-    end,
-  },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -855,37 +818,38 @@ require('lazy').setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
 }, {
-  ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
+  -- ui = {
+  --   -- If you are using a Nerd Font: set icons to an empty table which will use the
+  --   -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+  --   icons = vim.g.have_nerd_font and {} or {
+  --     cmd = '⌘',
+  --     config = '🛠',
+  --     event = '📅',
+  --     ft = '📂',
+  --     init = '⚙',
+  --     keys = '🗝',
+  --     plugin = '🔌',
+  --     runtime = '💻',
+  --     require = '🌙',
+  --     source = '📄',
+  --     start = '🚀',
+  --     task = '📌',
+  --     lazy = '💤 ',
+  --   },
+  -- },
 })
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.cmd 'set laststatus=3'
 
 require 'configs.options'
 require 'configs.mappings'
 require 'configs.vimtex'
 require 'configs.dap'
 require 'configs.multi'
-require 'configs.avalonia'
-
 require 'after_init'
+
+require 'colors.catppuccin'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

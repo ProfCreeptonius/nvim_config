@@ -16,7 +16,7 @@ map('n', '<space>lh', function()
 end, { desc = 'Toggle In[l]ay [H]ints' })
 map('n', '<leader>db', '<cmd>DapToggleBreakpoint<CR>', { desc = 'Toggle [D]ap [B]reakpoint' })
 map('n', '<leader>dr', '<cmd>DapContinue<CR>', { desc = '[D]ap [R]un' })
-map('n', '<leader>tp', "<cmd>lua require('base46').toggle_transparency()<CR>", { desc = 'Toggle [T]rans[p]arency' })
+-- map('n', '<leader>tp', "<cmd>lua require('base46').toggle_transparency()<CR>", { desc = 'Toggle [T]rans[p]arency' })
 map('t', '<C-z>', 'pwd | xclip -selection clipboard<CR><C-\\><C-n>:cd <C-r>+<CR>i')
 map('n', '<C-e>', '<CMD>Oil<CR>', { desc = 'Open file [E]xplorer' })
 
@@ -79,7 +79,6 @@ end
 
 map('n', '<leader>st', smallterm, { desc = 'Open [S]mall [T]erminal' })
 map('i', 'df', '<BS>')
-map('n', '<leader>aval', require('avalonia').open_preview, { desc = '[Aval]onia open preview' })
 map('n', '<leader>z', require('zen-mode').toggle, { desc = '[Z]en mode' })
 -- map('i', '<F1>', vim.cmd 'vsplit')
 map('i', '<C-w><C-s>', '<ESC><C-w><C-s>')
