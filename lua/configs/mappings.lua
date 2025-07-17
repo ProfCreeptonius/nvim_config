@@ -100,6 +100,7 @@ map('n', '<C-0>', '10<C-w><C-w>')
 map('n', '<C-/>', '<C-w><C-s>')
 map('n', '<C-S-/>', '<C-w><C-v>')
 map('n', '<C-c>', '<C-w><C-c>')
+map('n', '<C-t>', ':NvimTreeOpen<CR>')
 
 -- ['<leader>aion'] = cmp.mapping(function(fallback)
 --   cmp.setup.buffer {
