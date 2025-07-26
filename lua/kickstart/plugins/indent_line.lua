@@ -1,5 +1,3 @@
-local _, nvchad_colors = pcall(dofile, vim.g.base46_cache .. 'colors')
-
 local function clamp(component)
   return math.min(math.max(component, 0), 255)
 end
@@ -18,7 +16,6 @@ return {
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    dependencies = 'nvchad/base46',
     opts = {},
     config = function()
       local highlight = {
@@ -33,13 +30,13 @@ return {
       -- create the highlight groups in the highlight setup hook, so they are reset
       -- every time the colorscheme changes
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, 'RainbowRed', { fg = LightenDarkenColor(nvchad_colors.red, -0) })
-        vim.api.nvim_set_hl(0, 'RainbowYellow', { fg = LightenDarkenColor(nvchad_colors.yellow, -0) })
-        vim.api.nvim_set_hl(0, 'RainbowBlue', { fg = LightenDarkenColor(nvchad_colors.blue, -0) })
-        vim.api.nvim_set_hl(0, 'RainbowOrange', { fg = LightenDarkenColor(nvchad_colors.orange, -0) })
-        vim.api.nvim_set_hl(0, 'RainbowGreen', { fg = LightenDarkenColor(nvchad_colors.green, -0) })
-        vim.api.nvim_set_hl(0, 'RainbowViolet', { fg = LightenDarkenColor(nvchad_colors.purple, -0) })
-        vim.api.nvim_set_hl(0, 'RainbowCyan', { fg = LightenDarkenColor(nvchad_colors.cyan, -0) })
+        vim.api.nvim_set_hl(0, 'RainbowRed', { fg = '#E06C75' })
+        vim.api.nvim_set_hl(0, 'RainbowYellow', { fg = '#E5C07B' })
+        vim.api.nvim_set_hl(0, 'RainbowBlue', { fg = '#61AFEF' })
+        vim.api.nvim_set_hl(0, 'RainbowOrange', { fg = '#D19A66' })
+        vim.api.nvim_set_hl(0, 'RainbowGreen', { fg = '#98C379' })
+        vim.api.nvim_set_hl(0, 'RainbowViolet', { fg = '#C678DD' })
+        vim.api.nvim_set_hl(0, 'RainbowCyan', { fg = '#56B6C2' })
       end)
 
       vim.g.rainbow_delimiters = { highlight = highlight }

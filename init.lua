@@ -341,7 +341,7 @@ require('lazy').setup({
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
+    branch = 'master',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -464,6 +464,7 @@ require('lazy').setup({
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
+      'seblyng/roslyn.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
@@ -671,7 +672,12 @@ require('lazy').setup({
       --    :Mason
       --
       --  You can press `g?` for help in this menu.
-      require('mason').setup()
+      require('mason').setup {
+        registries = {
+          'github:Crashdummyy/mason-registry',
+          'github:mason-org/mason-registry',
+        },
+      }
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
@@ -693,6 +699,8 @@ require('lazy').setup({
           end,
         },
       }
+
+      require('lspconfig').gleam.setup {}
     end,
   },
 
@@ -767,10 +775,13 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    branch = 'main',
+    -- branch = 'master',
+    lazy = false,
+    -- main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'cpp', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = false,
       highlight = {
@@ -843,6 +854,28 @@ require('lazy').setup({
   -- },
 })
 
+-- Actually start treesitter
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'cpp', 'rust', 'javascript', 'zig', 'cs' },
+  callback = function()
+    -- syntax highlighting, provided by Neovim
+    vim.treesitter.start()
+    -- folds, provided by Neovim
+    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    -- indentation, provided by nvim-treesitter
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
+
+-- patchwork while plugins update to more recent treesitter
+-- vim.api.nvim_create_user_command('TSBufEnable', function(unused)
+--   pcall(vim.treesitter.start)
+-- end, { nargs = '?' })
+--
+-- vim.api.nvim_create_user_command('TSBufDisable', function(unused)
+--   pcall(vim.treesitter.stop)
+-- end, { nargs = '?' })
+
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.cmd 'set laststatus=3'
@@ -854,6 +887,5 @@ require 'configs.dap'
 require 'configs.multi'
 require 'after_init'
 
-require 'colors.catppuccin'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
