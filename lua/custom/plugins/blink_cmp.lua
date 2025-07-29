@@ -105,10 +105,12 @@ return {
       providers = {
         snippets = {
           name = 'snippets',
+          async = true,
           score_offset = 6,
         },
         lsp = {
           name = 'lsp',
+          async = true,
           score_offset = 5,
         },
         buffer = {
@@ -137,6 +139,7 @@ return {
     --
     -- See the fuzzy documentation for more information
     fuzzy = {
+
       implementation = 'prefer_rust_with_warning',
       sorts = {
         'score',

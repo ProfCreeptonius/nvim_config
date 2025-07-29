@@ -631,6 +631,7 @@ require('lazy').setup({
             '--completion-style=detailed',
             '--header-insertion-decorators',
             '--header-insertion=iwyu',
+            '--experimental-modules-support',
             '--pch-storage=memory',
           },
         },
@@ -856,25 +857,27 @@ require('lazy').setup({
 
 -- Actually start treesitter
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'cpp', 'rust', 'javascript', 'zig', 'cs' },
+  -- pattern = { 'cpp', 'rust', 'javascript', 'zig', 'cs', 'kotlin' },
+  pattern = { '*' },
   callback = function()
     -- syntax highlighting, provided by Neovim
-    vim.treesitter.start()
-    -- folds, provided by Neovim
-    vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    -- indentation, provided by nvim-treesitter
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    if pcall(vim.treesitter.start) then
+      -- folds, provided by Neovim
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      -- indentation, provided by nvim-treesitter
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
   end,
 })
 
 -- patchwork while plugins update to more recent treesitter
--- vim.api.nvim_create_user_command('TSBufEnable', function(unused)
---   pcall(vim.treesitter.start)
--- end, { nargs = '?' })
---
--- vim.api.nvim_create_user_command('TSBufDisable', function(unused)
---   pcall(vim.treesitter.stop)
--- end, { nargs = '?' })
+vim.api.nvim_create_user_command('TSBufEnable', function(unused)
+  pcall(vim.treesitter.start)
+end, { nargs = '?' })
+
+vim.api.nvim_create_user_command('TSBufDisable', function(unused)
+  pcall(vim.treesitter.stop)
+end, { nargs = '?' })
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2

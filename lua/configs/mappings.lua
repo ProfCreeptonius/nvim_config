@@ -18,7 +18,7 @@ map('n', '<leader>db', '<cmd>DapToggleBreakpoint<CR>', { desc = 'Toggle [D]ap [B
 map('n', '<leader>dr', '<cmd>DapContinue<CR>', { desc = '[D]ap [R]un' })
 -- map('n', '<leader>tp', "<cmd>lua require('base46').toggle_transparency()<CR>", { desc = 'Toggle [T]rans[p]arency' })
 map('t', '<C-z>', 'pwd | xclip -selection clipboard<CR><C-\\><C-n>:cd <C-r>+<CR>i')
-map('n', '<C-e>', '<CMD>Oil<CR>', { desc = 'Open file [E]xplorer' })
+map('n', '<leader>e', '<CMD>Oil<CR>', { desc = 'Open file [E]xplorer' })
 
 local builtin = require 'telescope.builtin'
 
