@@ -879,6 +879,12 @@ vim.api.nvim_create_user_command('TSBufDisable', function(unused)
   pcall(vim.treesitter.stop)
 end, { nargs = '?' })
 
+-- vim.lsp.config['ccls'] = {
+--   cmd = { '/home/maki/Documents/GitReposExtern/ccls/build/ccls' },
+--   filetypes = { 'cpp', 'hpp', 'c', 'h' },
+--   root_markers = { '.git', 'compile_commands.json' },
+-- }
+
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.cmd 'set laststatus=3'

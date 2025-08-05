@@ -1,4 +1,10 @@
 return {
   'nvim-tree/nvim-tree.lua',
-  opts = {},
+  opts = {
+    view = {
+      float = {
+        enable = false,
+      },
+    },
+  },
 }

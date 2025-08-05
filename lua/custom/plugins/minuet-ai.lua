@@ -18,6 +18,7 @@ return {
           name = 'Ollama',
           end_point = 'http://localhost:11434/v1/completions',
           model = 'deepseek-coder-v2:16b-lite-base-q6_K',
+          -- model = 'qwen3-coder:30b',
           optional = {
             max_tokens = 56,
             top_p = 0.9,

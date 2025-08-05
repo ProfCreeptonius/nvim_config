@@ -106,7 +106,7 @@ return {
         snippets = {
           name = 'snippets',
           async = true,
-          score_offset = 6,
+          score_offset = 4,
         },
         lsp = {
           name = 'lsp',

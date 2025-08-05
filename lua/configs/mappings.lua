@@ -25,7 +25,10 @@ local builtin = require 'telescope.builtin'
 -- telescope
 vim.keymap.set('n', '<leader>fz', function()
   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy {
+    layout_config = {
+      height = 10,
+    },
     previewer = false,
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
@@ -105,6 +108,10 @@ map('n', '<C-t>', ':NvimTreeOpen<CR>')
 map('n', '<leader>tse', function()
   pcall(vim.treesitter.start)
 end, { desc = '[T]ree[S]itter [E]nable' })
+
+-- map('n', 'm/', vim.cmd 'MarksListBuf')
+
+vim.keymap.set({ 'n', 'v' }, 'm/', ':MarksListBuf<CR>')
 
 if vim.g.neovide then
   vim.keymap.set({ 'n', 'v' }, '<C-+>', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>')
