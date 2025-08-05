@@ -3,17 +3,16 @@
 
 Repository for my neovim config, based on:
   -  Kickstart: https://github.com/nvim-lua/kickstart.nvim
-  -  NvChad: https://github.com/NvChad/NvChad
 
 Most notable plugins being:
   - Kickstart, to kickstart the config (ha ha get it).
-  - Lualine, a really nice status line.
-  - Oil, my favourite file explorer.
-  - NvChad's base46, for an actually good theming infrastructure.
+  - Oil, my favorite file explorer.
+  - Flash, for easier searching
   - MultiCursors to make Visual Block mode even more powerful.
   - Surround, to be able to deal with matching parentheses better.
   - Rainbow and Indent-Blankline, to help with visually identifying matching braces.
-  - Mini, for better around/inside motions.
+  - Mini, for better around/inside motions, statusline and colorscheme infrastructure.
+  - Trouble, for better error messages and a nice outline
 
 And some other plugins, see `./lua/custom/plugins/`
 
