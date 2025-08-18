@@ -104,7 +104,9 @@ map('n', '<C-0>', '10<C-w><C-w>')
 map('n', '<C-/>', '<C-w><C-s>')
 map('n', '<C-S-/>', '<C-w><C-v>')
 map('n', '<C-c>', '<C-w><C-c>')
-map('n', '<leader>to', ':NvimTreeOpen<CR>', { desc = 'Nvim [T]ree [O]pen' })
+map('n', '<leader>to', function()
+  Snacks.explorer.reveal()
+end, { desc = 'Nvim [T]ree [O]pen' })
 map('n', '<leader>tse', function()
   pcall(vim.treesitter.start)
 end, { desc = '[T]ree[S]itter [E]nable' })
@@ -112,16 +114,35 @@ end, { desc = '[T]ree[S]itter [E]nable' })
 -- map('n', 'm/', vim.cmd 'MarksListBuf')
 
 vim.keymap.set({ 'n', 'v' }, 'm/', ':MarksListBuf<CR>')
+map('i', '<c-x><c-]>', function()
+  require('blink.cmp')['show'] { providers = { 'lsp' } }
+end, {})
+map('i', '<c-x><c-a>', function()
+  require('blink.cmp')['show'] { providers = { 'minuet' } }
+end, {})
+map('i', '<c-x><c-n>', function()
+  require('blink.cmp')['show'] { providers = { 'buffer' } }
+end, {})
+map('i', '<c-x><c-f>', function()
+  require('blink.cmp')['show'] { providers = { 'file' } }
+end)
+
+map('i', '<c-x>s', function()
+  require('blink.cmp')['show'] { providers = { spell = { name = 'Spell', module = 'blink-cmp-spell' } } }
+end)
+
+map('i', '<c-x><c-t>', function()
+  require('blink.cmp')['show'] { providers = { thesaurus = { name = 'blink-cmp-words', module = 'blink-cmp-words.thesaurus' } } }
+end)
+
+map('i', '<c-x><c-k>', function()
+  require('blink.cmp')['show'] { providers = { thesaurus = { name = 'blink-cmp-words', module = 'blink-cmp-words.dictionary' } } }
+end)
+
+--
 
 if vim.g.neovide then
   vim.keymap.set({ 'n', 'v' }, '<C-+>', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>')
   vim.keymap.set({ 'n', 'v' }, '<C-->', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>')
   vim.keymap.set({ 'n', 'v' }, '<C-0>', ':lua vim.g.neovide_scale_factor = 1<CR>')
 end
--- ['<leader>aion'] = cmp.mapping(function(fallback)
---   cmp.setup.buffer {
---     sources = default_sources_with_ai,
---     sorting = default_sorting,
---   }
---   cmp.complete()
--- end, { 'n' }),

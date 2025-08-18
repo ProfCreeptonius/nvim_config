@@ -5,6 +5,8 @@ return {
     'rafamadriz/friendly-snippets',
     'ribru17/blink-cmp-spell',
     'milanglacier/minuet-ai.nvim',
+    'ribru17/blink-cmp-spell',
+    'archie-judd/blink-cmp-words',
   },
 
   -- use a release tag to download pre-built binaries
@@ -101,7 +103,7 @@ return {
     --   preset = 'luasnip',
     -- },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'spell' },
+      default = { 'lsp', 'snippets', 'buffer' },
       providers = {
         snippets = {
           name = 'snippets',

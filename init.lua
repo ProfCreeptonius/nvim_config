@@ -631,15 +631,14 @@ require('lazy').setup({
             '--completion-style=detailed',
             '--header-insertion-decorators',
             '--header-insertion=iwyu',
-            '--experimental-modules-support',
             '--pch-storage=memory',
           },
         },
-        gopls = {
-          cmd = {
-            'gopls',
-          },
-        },
+        -- gopls = {
+        --   cmd = {
+        --     'gopls',
+        --   },
+        -- },
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -775,6 +774,9 @@ require('lazy').setup({
 
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-context',
+    },
     build = ':TSUpdate',
     branch = 'main',
     -- branch = 'master',
@@ -888,6 +890,27 @@ end, { nargs = '?' })
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.cmd 'set laststatus=3'
+
+-- vim.lsp.config.clangd = {
+--   cmd = {
+--     'clangd',
+--     '--background-index',
+--     '-j=32',
+--     '--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
+--     '--clang-tidy',
+--     -- '--clang-tidy-checks=*',
+--     '--all-scopes-completion',
+--     '--cross-file-rename',
+--     '--completion-style=detailed',
+--     '--header-insertion-decorators',
+--     '--header-insertion=iwyu',
+--     '--pch-storage=memory',
+--   },
+--   root_markers = { '.clangd', 'compile_commands.json' },
+-- }
+-- require('lspconfig')['clangd'].setup {
+--   cmd = { 'clangd', '--background-index', '--clang-tidy' },
+-- }
 
 require 'configs.options'
 require 'configs.mappings'
