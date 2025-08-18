@@ -139,6 +139,8 @@ map('i', '<c-x><c-k>', function()
   require('blink.cmp')['show'] { providers = { thesaurus = { name = 'blink-cmp-words', module = 'blink-cmp-words.dictionary' } } }
 end)
 
+map('n', '<c-x><c-k>', ':let @+ = expand(' % ')<CR>')
+
 --
 
 if vim.g.neovide then
