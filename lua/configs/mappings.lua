@@ -124,7 +124,7 @@ map('i', '<c-x><c-n>', function()
   require('blink.cmp')['show'] { providers = { 'buffer' } }
 end, {})
 map('i', '<c-x><c-f>', function()
-  require('blink.cmp')['show'] { providers = { 'file' } }
+  require('blink.cmp')['show'] { providers = { 'path' } }
 end)
 
 map('i', '<c-x>s', function()
