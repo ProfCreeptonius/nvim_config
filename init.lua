@@ -463,7 +463,16 @@ require('lazy').setup({
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-      'williamboman/mason-lspconfig.nvim',
+      {
+        'williamboman/mason-lspconfig.nvim',
+        -- opts = {
+        --   automatic_enable = {
+        --     exclude = {
+        --       'clangd',
+        --     },
+        --   },
+        -- },
+      },
       'seblyng/roslyn.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -472,7 +481,7 @@ require('lazy').setup({
       { 'j-hui/fidget.nvim', opts = {} },
 
       -- Allows extra capabilities provided by nvim-cmp
-      'hrsh7th/cmp-nvim-lsp',
+      -- 'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -606,7 +615,7 @@ require('lazy').setup({
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities({}, false))
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -619,6 +628,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {
+          mason = false,
           cmd = {
             'clangd',
             '--background-index',
@@ -632,6 +642,11 @@ require('lazy').setup({
             '--header-insertion-decorators',
             '--header-insertion=iwyu',
             '--pch-storage=memory',
+          },
+        },
+        kotlin_lsp = {
+          cmd = {
+            'kotlin-lsp',
           },
         },
         -- gopls = {
@@ -867,7 +882,7 @@ vim.api.nvim_create_autocmd('FileType', {
       -- folds, provided by Neovim
       vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
       -- indentation, provided by nvim-treesitter
-      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end
   end,
 })
@@ -889,6 +904,7 @@ end, { nargs = '?' })
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.timeoutlen = 5000
 vim.cmd 'set laststatus=3'
 
 -- vim.lsp.config.clangd = {

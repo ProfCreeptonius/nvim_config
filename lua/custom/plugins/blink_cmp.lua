@@ -69,6 +69,19 @@ return {
       ghost_text = {
         enabled = true,
       },
+      keyword = {
+        range = 'prefix',
+      },
+      accept = {
+        auto_brackets = {
+          kind_resolution = {
+            blocked_filetypes = { 'tex' },
+          },
+          semantic_token_resolution = {
+            blocked_filetypes = { 'tex' },
+          },
+        },
+      },
       menu = {
         border = 'none',
         auto_show = true,
