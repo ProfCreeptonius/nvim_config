@@ -1,10 +1,18 @@
 return {
   'seblyng/roslyn.nvim',
-  ft = 'cs',
+  ft = { 'cs', 'razor' },
   ---@module 'roslyn.config'
   ---@type RoslynNvimConfig
   opts = {
     filewatching = 'roslyn',
+  },
+  dependencies = {
+    {
+      -- By loading as a dependencies, we ensure that we are available to set
+      -- the handlers for Roslyn.
+      'tris203/rzls.nvim',
+      config = true,
+    },
   },
   config = function()
     local dap = require 'dap'
