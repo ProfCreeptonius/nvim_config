@@ -43,6 +43,7 @@ return { -- Collection of various small independent plugins/modules
         active = make_active_statusline,
       },
     }
+    require('mini.move').setup {}
     require('mini.colors').setup {}
     local onedark_colorscheme = MiniColors.get_colorscheme 'onedark'
   end,

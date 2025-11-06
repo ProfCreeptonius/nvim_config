@@ -10,7 +10,7 @@ return {
       -- require('onedark').load()
     end,
   },
-  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000, opts = { transparent_background = true } },
   { 'Mofiqul/vscode.nvim' },
   { 'projekt0n/github-nvim-theme', name = 'github-theme' },
   { 'shaunsingh/nord.nvim' },

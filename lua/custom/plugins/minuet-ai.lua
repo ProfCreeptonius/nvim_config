@@ -24,6 +24,12 @@ return {
             top_p = 0.9,
           },
         },
+        template = {
+          prompt = function(context_before_cursor, context_after_cursor, _)
+            return '<|fim_prefix|>' .. context_before_cursor .. '<|fim_suffix|>' .. context_after_cursor .. '<|fim_middle|>'
+          end,
+          suffix = false,
+        },
       },
     }
   end,

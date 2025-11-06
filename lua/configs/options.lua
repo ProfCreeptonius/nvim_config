@@ -1,7 +1,7 @@
 vim.filetype.add {
   extension = {
     qrc = 'xml',
-    ts = 'xml',
+    -- ts = 'xml',
   },
 }
 
