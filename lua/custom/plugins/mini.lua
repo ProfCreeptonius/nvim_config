@@ -35,14 +35,14 @@ return { -- Collection of various small independent plugins/modules
   'echasnovski/mini.nvim',
   config = function()
     require('mini.ai').setup { n_lines = 500 }
-    local statusline = require 'mini.statusline'
-    statusline.setup {}
-    statusline.setup {
-      use_icons = vim.g.have_nerd_font,
-      content = {
-        active = make_active_statusline,
-      },
-    }
+    -- local statusline = require 'mini.statusline'
+    -- statusline.setup {}
+    -- statusline.setup {
+    --   use_icons = vim.g.have_nerd_font,
+    --   content = {
+    --     active = make_active_statusline,
+    --   },
+    -- }
     require('mini.move').setup {}
     require('mini.colors').setup {}
     local onedark_colorscheme = MiniColors.get_colorscheme 'onedark'

@@ -1,3 +1,4 @@
+-- require 'colors.catppuccin'
 require 'colors.catppuccin_black'
 
 if vim.g.neovide then
