@@ -63,6 +63,8 @@ map('n', 's', '*Ncgn', { noremap = true, silent = true, desc = '[S]ubstitute cur
 
 -- Quickfix list
 local function quickfixerrors()
+  local compile = require 'compile-mode'
+  compile.send_to_qflist()
   local diag_table = vim.diagnostic.get(nil)
   local quickfix_items = vim.diagnostic.toqflist(diag_table)
   vim.fn.setqflist(quickfix_items, 'a')
@@ -82,7 +84,7 @@ local function smallterm()
 end
 
 map('n', '<leader>st', smallterm, { desc = 'Open [S]mall [T]erminal' })
-map('i', 'df', '<BS>')
+-- map('i', 'df', '<BS>')
 map('n', '<leader>z', require('zen-mode').toggle, { desc = '[Z]en mode' })
 -- map('i', '<F1>', vim.cmd 'vsplit')
 map('i', '<C-w><C-s>', '<ESC><C-w><C-s>')
@@ -140,6 +142,9 @@ map('i', '<c-x><c-k>', function()
 end)
 
 map('n', '<c-x><c-k>', ':let @+ = expand(" % ")<CR>')
+map('n', '<leader>cx', ':Compile<CR>')
+local compile_mode = require 'compile-mode'
+map('n', '<leader>cd', compile_mode.close_buffer)
 
 --
 

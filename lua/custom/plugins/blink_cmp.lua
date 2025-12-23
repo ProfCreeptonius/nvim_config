@@ -4,7 +4,7 @@ return {
   dependencies = {
     'rafamadriz/friendly-snippets',
     'ribru17/blink-cmp-spell',
-    'milanglacier/minuet-ai.nvim',
+    -- 'milanglacier/minuet-ai.nvim',
     'ribru17/blink-cmp-spell',
     'archie-judd/blink-cmp-words',
   },
@@ -33,11 +33,11 @@ return {
     -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = {
       preset = 'default',
-      ['<A-y>'] = {
-        function(cmp)
-          cmp.show { providers = { 'minuet' } }
-        end,
-      },
+      -- ['<A-y>'] = {
+      --   function(cmp)
+      --     cmp.show { providers = { 'minuet' } }
+      --   end,
+      -- },
       ['<C-l>'] = {
         function(cmp)
           cmp.snippet_forward()
@@ -140,13 +140,13 @@ return {
           async = true,
           score_offset = -2,
         },
-        minuet = {
-          name = 'minuet',
-          module = 'minuet.blink',
-          score_offset = 5,
-          opts = {},
-          async = true,
-        },
+        -- minuet = {
+        --   name = 'minuet',
+        --   module = 'minuet.blink',
+        --   score_offset = 5,
+        --   opts = {},
+        --   async = true,
+        -- },
       },
     }, -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
     -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,

@@ -14,6 +14,7 @@ lualine_theme.replace = {
 local config = {
   options = {
     icons_enabled = true,
+    -- theme = lualine_theme,
     theme = lualine_theme,
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
@@ -48,9 +49,9 @@ local config = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
     lualine_c = { 'lsp_status' },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
-    lualine_y = { 'progress', 'selectioncount' },
-    lualine_z = { 'filename', 'searchcount' },
+    lualine_x = { { 'filename', path = 2 } },
+    lualine_y = { 'encoding', 'fileformat', 'filetype', 'selectioncount' },
+    lualine_z = { 'progress', 'location', 'searchcount' },
   },
   inactive_sections = {
     lualine_a = {},

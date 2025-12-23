@@ -4,7 +4,7 @@ return {
   ---@module 'roslyn.config'
   ---@type RoslynNvimConfig
   opts = {
-    filewatching = 'auto',
+    filewatching = 'roslyn',
   },
   dependencies = {
     {
