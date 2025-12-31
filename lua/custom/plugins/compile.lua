@@ -6,6 +6,7 @@ return {
   -- or the most up-to-date updates:
   -- branch = "nightly",
   lazy = false,
+  priority = 51,
   dependencies = {
     'nvim-lua/plenary.nvim',
     -- if you want to enable coloring of ANSI escape codes in
